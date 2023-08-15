@@ -8,4 +8,4 @@ authors = ["Hugh Brown <hughdbrown@gmail.com>"]
 
 [dependencies]
 knapsack_utils = {git = "https://github.com/hughdbrown/knapsack_utils.git" }
-
+prng = {git = "https://github.com/hughdbrown/prng.git" }
