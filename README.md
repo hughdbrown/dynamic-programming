@@ -6,7 +6,6 @@ Very fast. Solves problem of size 200 in 0.50 seconds.
 
 ```
 > time cargo run
-```
 Items:          200
 Total value:    1171
 Total weight:   1871
