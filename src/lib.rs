@@ -57,8 +57,9 @@ mod tests {
             Item{value:2000, weight:3},
             Item{value:3000, weight:4},
         ];
-        let value = solve_dp(&items, 4);
-        assert_eq!(value, 3500);
+        let result = solve_dp(&items, 4);
+        assert_eq!(result.2, 3500);
+        assert_eq!(result.1, 4);
     }
 
     #[test]
@@ -69,8 +70,9 @@ mod tests {
             Item{value:2000, weight:3},
             Item{value:1500, weight:1},
         ];
-        let value = solve_dp(&items, 4);
-        assert_eq!(value, 3500);
+        let result = solve_dp(&items, 4);
+        assert_eq!(result.2, 3500);
+        assert_eq!(result.1, 4);
     }
 
     #[test]
@@ -81,8 +83,9 @@ mod tests {
             Item{value:2000, weight:3},
             Item{value:3000, weight:4},
         ];
-        let value = solve_dp(&items, 4);
-        assert_eq!(value, 3500);
+        let result = solve_dp(&items, 4);
+        assert_eq!(result.2, 3500);
+        assert_eq!(result.1, 4);
     }
 
     #[test]
@@ -93,8 +96,9 @@ mod tests {
             Item{value:3, weight:2},
             Item{value:1, weight:2},
         ];
-        let value = solve_dp(&items, 3);
-        assert_eq!(value, 5);
+        let result = solve_dp(&items, 3);
+        assert_eq!(result.2, 5);
+        assert_eq!(result.1, 3);
     }
 
     #[test]
@@ -105,8 +109,9 @@ mod tests {
             Item{value:3, weight:2},
             Item{value:2, weight:1},
         ];
-        let value = solve_dp(&items, 3);
-        assert_eq!(value, 5);
+        let result = solve_dp(&items, 3);
+        assert_eq!(result.2, 5);
+        assert_eq!(result.1, 3);
     }
 
     #[test]
@@ -117,8 +122,9 @@ mod tests {
             Item{value:1, weight:2},
             Item{value:3, weight:2},
         ];
-        let value = solve_dp(&items, 3);
-        assert_eq!(value, 5);
+        let result = solve_dp(&items, 3);
+        assert_eq!(result.2, 5);
+        assert_eq!(result.1, 3);
     }
 
     #[test]
@@ -129,8 +135,9 @@ mod tests {
             Item{value:1, weight:2},
             Item{value:2, weight:1},
         ];
-        let value = solve_dp(&items, 3);
-        assert_eq!(value, 5);
+        let result = solve_dp(&items, 3);
+        assert_eq!(result.2, 5);
+        assert_eq!(result.1, 3);
     }
 
     #[test]
@@ -141,8 +148,9 @@ mod tests {
             Item{value:2, weight:1},
             Item{value:3, weight:2},
         ];
-        let value = solve_dp(&items, 3);
-        assert_eq!(value, 5);
+        let result = solve_dp(&items, 3);
+        assert_eq!(result.2, 5);
+        assert_eq!(result.1, 3);
     }
 
     #[test]
@@ -153,7 +161,8 @@ mod tests {
             Item{value:2, weight:1},
             Item{value:1, weight:2},
         ];
-        let value = solve_dp(&items, 3);
-        assert_eq!(value, 5);
+        let result = solve_dp(&items, 3);
+        assert_eq!(result.2, 5);
+        assert_eq!(result.1, 3);
     }
 }
