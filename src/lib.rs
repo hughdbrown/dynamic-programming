@@ -2,10 +2,12 @@ use std::cmp::max;
 
 use knapsack_utils::{
     Item,
+    sum_weights,
+    select_items,
 };
 
 
-fn solve_dp(items: &[Item], weight: u64) -> u64 {
+pub fn solve_dp(items: &[Item], weight: usize) -> (Vec<usize>, usize, u64) {
     let rows = items.len() + 1;
     let columns = (weight + 1) as usize;
     let mut array = vec![vec![0; columns]; rows];
@@ -22,20 +24,24 @@ fn solve_dp(items: &[Item], weight: u64) -> u64 {
         }
     }
 
-    println!("{:?}", array);
-    let mut path: Vec<Item> = vec![];
+    let mut reverse_path: Vec<usize> = vec![];
     let mut col: usize = columns - 1;
     for row in (1..rows).rev() {
         if array[row][col] > array[row - 1][col] {
-            // Item was added at this step.
-            let it = &items[row - 1];
-            path.push(it.clone());
-            col -= it.weight;
+            // Item in row `row - 1` was added at this step.
+            reverse_path.push(row - 1);
+            col -= items[row - 1].weight;
         }
     }
-    println!("path = {:?}", &path.iter().rev().collect::<Vec::<_>>());
 
-    array[rows - 1][columns - 1]
+    let forward_path: Vec<usize> = reverse_path.iter()
+        .rev()
+        .map(|x: &usize| *x)
+        .collect::<Vec::<_>>();
+    let selected_items: Vec<Item> = select_items(items, &forward_path); 
+    let weight = sum_weights(&selected_items); 
+
+    (forward_path, weight, array[rows - 1][columns - 1])
 }
 
 
