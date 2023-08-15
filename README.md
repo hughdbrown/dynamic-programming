@@ -7,7 +7,7 @@ Very fast. Solves problem of size 200 in 0.50 seconds.
 ```
 > time cargo run
 ```
-# items:        200
+Items:          200
 Total value:    1171
 Total weight:   1871
 Allowed weight: 1500
@@ -20,4 +20,4 @@ Validate calculations:
 	weight = 1500
 	 value = 1115
 cargo run  0.09s user 0.03s system 25% cpu 0.457 total
-
+```
