@@ -34,10 +34,11 @@ pub fn solve_dp(items: &[Item], weight: usize) -> (Vec<usize>, usize, u64) {
         }
     }
 
-    let forward_path: Vec<usize> = reverse_path.iter()
+    // Reverse the path into a forward path
+    let forward_path: Vec<usize> = reverse_path.into_iter()
         .rev()
-        .map(|x: &usize| *x)
         .collect::<Vec::<_>>();
+
     let selected_items: Vec<Item> = select_items(items, &forward_path); 
     let weight = sum_weights(&selected_items); 
 
