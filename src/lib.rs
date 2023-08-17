@@ -14,15 +14,15 @@ pub fn solve_dp(items: &[Item], weight: usize) -> (Vec<usize>, usize, u64) {
 
     // Solve knapsack problem
     // Answer is in the lower right corner of the array.
-    for i in 1..rows {
-        let it = &items[i - 1];
-        for j in 1..it.weight {
-            array[i][j] = array[i - 1][j];
+    for (prev_row, row) in (1..rows).enumerate() {
+        let it = &items[prev_row];
+        for col in 1..it.weight {
+            array[row][col] = array[prev_row][col];
         }
-        for j in it.weight..columns {
-            array[i][j] = max(
-                array[i - 1][j],
-                it.value + array[i - 1][j - it.weight],
+        for col in it.weight..columns {
+            array[row][col] = max(
+                array[prev_row][col],
+                it.value + array[prev_row][col - it.weight],
             )
         }
     }
