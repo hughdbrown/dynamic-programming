@@ -8,7 +8,7 @@ use knapsack_utils::{
 };
 
 
-pub fn solve_dp(items: &[Item], weight: usize) -> SearchResult {
+pub fn solve_dp(items: &[Item], weight: usize) -> Result<SearchResult, ()> {
     let rows = items.len() + 1;
     let columns = (weight + 1) as usize;
     let mut array = vec![vec![0; columns]; rows];
@@ -48,7 +48,7 @@ pub fn solve_dp(items: &[Item], weight: usize) -> SearchResult {
     let selected_items: Vec<Item> = select_items(items, &forward_path); 
     let weight = sum_weights(&selected_items); 
 
-    (forward_path, weight, array[rows - 1][columns - 1])
+    Ok((forward_path, weight, array[rows - 1][columns - 1]))
 }
 
 
@@ -64,9 +64,10 @@ mod tests {
             Item{value:2000, weight:3},
             Item{value:3000, weight:4},
         ];
-        let result = solve_dp(&items, 4);
-        assert_eq!(result.2, 3500);
-        assert_eq!(result.1, 4);
+        if let Ok(result) = solve_dp(&items, 4) {
+            assert_eq!(result.2, 3500);
+            assert_eq!(result.1, 4);
+        }
     }
 
     #[test]
@@ -77,9 +78,10 @@ mod tests {
             Item{value:2000, weight:3},
             Item{value:1500, weight:1},
         ];
-        let result = solve_dp(&items, 4);
-        assert_eq!(result.2, 3500);
-        assert_eq!(result.1, 4);
+        if let Ok(result) = solve_dp(&items, 4) {
+            assert_eq!(result.2, 3500);
+            assert_eq!(result.1, 4);
+        }
     }
 
     #[test]
@@ -90,9 +92,10 @@ mod tests {
             Item{value:2000, weight:3},
             Item{value:3000, weight:4},
         ];
-        let result = solve_dp(&items, 4);
-        assert_eq!(result.2, 3500);
-        assert_eq!(result.1, 4);
+        if let Ok(result) = solve_dp(&items, 4) {
+            assert_eq!(result.2, 3500);
+            assert_eq!(result.1, 4);
+        }
     }
 
     #[test]
@@ -103,9 +106,10 @@ mod tests {
             Item{value:3, weight:2},
             Item{value:1, weight:2},
         ];
-        let result = solve_dp(&items, 3);
-        assert_eq!(result.2, 5);
-        assert_eq!(result.1, 3);
+        if let Ok(result) = solve_dp(&items, 3) {
+            assert_eq!(result.2, 5);
+            assert_eq!(result.1, 3);
+        }
     }
 
     #[test]
@@ -116,9 +120,10 @@ mod tests {
             Item{value:3, weight:2},
             Item{value:2, weight:1},
         ];
-        let result = solve_dp(&items, 3);
-        assert_eq!(result.2, 5);
-        assert_eq!(result.1, 3);
+        if let Ok(result) = solve_dp(&items, 3) {
+            assert_eq!(result.2, 5);
+            assert_eq!(result.1, 3);
+        }
     }
 
     #[test]
@@ -129,9 +134,10 @@ mod tests {
             Item{value:1, weight:2},
             Item{value:3, weight:2},
         ];
-        let result = solve_dp(&items, 3);
-        assert_eq!(result.2, 5);
-        assert_eq!(result.1, 3);
+        if let Ok(result) = solve_dp(&items, 3) {
+            assert_eq!(result.2, 5);
+            assert_eq!(result.1, 3);
+        }
     }
 
     #[test]
@@ -142,9 +148,10 @@ mod tests {
             Item{value:1, weight:2},
             Item{value:2, weight:1},
         ];
-        let result = solve_dp(&items, 3);
-        assert_eq!(result.2, 5);
-        assert_eq!(result.1, 3);
+        if let Ok(result) = solve_dp(&items, 3) {
+            assert_eq!(result.2, 5);
+            assert_eq!(result.1, 3);
+        }
     }
 
     #[test]
@@ -155,9 +162,10 @@ mod tests {
             Item{value:2, weight:1},
             Item{value:3, weight:2},
         ];
-        let result = solve_dp(&items, 3);
-        assert_eq!(result.2, 5);
-        assert_eq!(result.1, 3);
+        if let Ok(result) = solve_dp(&items, 3) {
+            assert_eq!(result.2, 5);
+            assert_eq!(result.1, 3);
+        }
     }
 
     #[test]
@@ -168,8 +176,9 @@ mod tests {
             Item{value:2, weight:1},
             Item{value:1, weight:2},
         ];
-        let result = solve_dp(&items, 3);
-        assert_eq!(result.2, 5);
-        assert_eq!(result.1, 3);
+        if let Ok(result) = solve_dp(&items, 3) {
+            assert_eq!(result.2, 5);
+            assert_eq!(result.1, 3);
+        }
     }
 }

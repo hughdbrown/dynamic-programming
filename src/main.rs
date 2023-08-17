@@ -33,11 +33,16 @@ fn main() {
     println!();
 
     let result = solve_dp(&items, LIMIT_WEIGHT);
-    let (path, weight, value) = result;
-    println!("Weight = {weight}");
-    println!("Value = {value}");
-    println!("Path = {:?}", path);
-    let selected_items: Vec<Item> = select_items(&items, &path);
-    println!("Items = {:#?}", selected_items);
-    println!("Validate calculations:\n\tweight = {}\n\t value = {}", sum_weights(&selected_items), sum_values(&selected_items));
+    match result {
+        Ok(solution) => {
+            let (path, weight, value) = solution;
+            println!("Weight = {weight}");
+            println!("Value = {value}");
+            println!("Path = {:?}", path);
+            let selected_items: Vec<Item> = select_items(&items, &path);
+            println!("Items = {:#?}", selected_items);
+            println!("Validate calculations:\n\tweight = {}\n\t value = {}", sum_weights(&selected_items), sum_values(&selected_items));
+        },
+        Err(_) => {},
+    }
 }
