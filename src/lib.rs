@@ -11,6 +11,9 @@ pub fn solve_dp(items: &[Item], weight: usize) -> (Vec<usize>, usize, u64) {
     let rows = items.len() + 1;
     let columns = (weight + 1) as usize;
     let mut array = vec![vec![0; columns]; rows];
+
+    // Solve knapsack problem
+    // Answer is in the lower right corner of the array.
     for i in 1..rows {
         let it = &items[i - 1];
         for j in 1..it.weight {
@@ -24,6 +27,8 @@ pub fn solve_dp(items: &[Item], weight: usize) -> (Vec<usize>, usize, u64) {
         }
     }
 
+    // Work backwards to find the path
+    // Vector of indexes to items are stored in reverse order in revese_path
     let mut reverse_path: Vec<usize> = vec![];
     let mut col: usize = columns - 1;
     for row in (1..rows).rev() {
