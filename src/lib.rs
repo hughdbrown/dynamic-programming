@@ -4,10 +4,11 @@ use knapsack_utils::{
     Item,
     sum_weights,
     select_items,
+    SearchResult,
 };
 
 
-pub fn solve_dp(items: &[Item], weight: usize) -> (Vec<usize>, usize, u64) {
+pub fn solve_dp(items: &[Item], weight: usize) -> SearchResult {
     let rows = items.len() + 1;
     let columns = (weight + 1) as usize;
     let mut array = vec![vec![0; columns]; rows];
